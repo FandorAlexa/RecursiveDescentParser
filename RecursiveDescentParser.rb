@@ -9,12 +9,13 @@ class RecursiveDescentParser
   end
 
   def advancePtr
-    if index < (inputString.length -1) index++
+    if index < (inputString.length -1)
+      index += 1
     end
   end
 
   def match(t)
-    t == token? advancePtr : error
+    t == token ? advancePtr : error
   end
 
   def error
