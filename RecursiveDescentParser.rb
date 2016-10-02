@@ -1,4 +1,28 @@
 class RecursiveDescentParser
+  private
+  inputString = ""
+  index = 0
+  errorflag = 0
+
+  def token
+    inputString.charAt(index)
+  end
+
+  def advancePtr
+    if index < (inputString.length -1) index++
+    end
+  end
+
+  def match(t)
+    t == token? advancePtr : error
+  end
+
+  def error
+    puts "error at position: #{index}"
+    errorflag = 1
+    advancePtr
+  end
+
   def block
   end
 
