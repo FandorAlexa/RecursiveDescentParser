@@ -1,4 +1,5 @@
 class RecursiveDescentParser
+  #TODO Replace all match(method_name) with the tokens they contain
   private
   inputString = ""
   index = 0
@@ -64,6 +65,11 @@ class RecursiveDescentParser
   end
 
   def inpout
+    match(iosym)
+    match(ident)
+    while token.match(",") do
+      ident
+    end
   end
 
   def comprsn
