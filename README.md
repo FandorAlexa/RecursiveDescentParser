@@ -1,2 +1,2 @@
-Recursive-Descent Recognizer
-  This is the first homework assignment for CSC-135.
+# Recursive-Descent Recognizer
+1.  This is the first homework assignment for CSC-135.
