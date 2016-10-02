@@ -3,6 +3,7 @@ class RecursiveDescentParser
   inputString = ""
   index = 0
   errorflag = 0
+  @token = token
 
   def token
     inputString.charAt(index)
@@ -25,6 +26,14 @@ class RecursiveDescentParser
   end
 
   def block
+    match("B")
+    while @token.match("statemt") do
+      statemt
+    end
+    match("E")
+    if @token.match("D")
+      match("D")
+    end
   end
 
   def statemt
