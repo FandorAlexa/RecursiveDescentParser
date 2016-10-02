@@ -58,6 +58,9 @@ class RecursiveDescentParser
 
   def wcomprsn
     #Formerly named while, obviously a keyword so it has been renamed for clarity
+    match("W")
+    comprsn
+    block
   end
 
   def inpout
