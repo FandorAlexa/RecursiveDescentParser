@@ -40,6 +40,10 @@ class RecursiveDescentParser
   end
 
   def asignmt
+    match("A")
+    ident
+    match("~")
+    exprsn
   end
 
   def ifstmt
