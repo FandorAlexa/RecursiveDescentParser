@@ -90,6 +90,11 @@ class RecursiveDescentParser
   end
 
   def factor
+    oprnd
+    while match(prodop) do
+      prodop
+      oprnd
+    end
   end
 
   def oprnd
