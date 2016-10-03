@@ -82,6 +82,11 @@ class RecursiveDescentParser
   end
 
   def exprsn
+    factor
+    while match(sumop) do
+      sumop
+      factor
+    end
   end
 
   def factor
