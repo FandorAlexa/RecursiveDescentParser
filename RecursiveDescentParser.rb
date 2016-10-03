@@ -53,7 +53,7 @@ class RecursiveDescentParser
     block
     if token.match("L")
       match("L")
-      match(block)
+      block
     end
   end
 
@@ -65,14 +65,20 @@ class RecursiveDescentParser
   end
 
   def inpout
-    match(iosym)
-    match(ident)
+    iosym
+    ident
     while token.match(",") do
+      match(",")
       ident
     end
   end
 
   def comprsn
+    match("(")
+    oprnd
+    opratr
+    oprnd
+    match(")")
   end
 
   def exprsn
