@@ -109,7 +109,7 @@ class RecursiveDescentParser
 
   def charter
     #Formerly named char, obviously a keyword so it has been renamed for clarity
-    match(letter) ? letter : digit
+        match(letter) ? letter : digit
   end
 
   def intger
