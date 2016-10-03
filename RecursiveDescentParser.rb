@@ -141,5 +141,6 @@ class RecursiveDescentParser
   end
 
   def digit
+    token == "0" || "1" ? match(token) : error
   end
 end
