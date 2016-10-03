@@ -133,6 +133,7 @@ class RecursiveDescentParser
   end
 
   def prodop
+    token == "*" || "/" ? match(token) : error
   end
 
   def letter
