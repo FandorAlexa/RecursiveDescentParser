@@ -1,7 +1,7 @@
 class RecursiveDescentParser
   #TODO Replace all match(method_name) with the tokens they contain
   private
-  inputString = ""
+  inputString = ''
   index = 0
   errorflag = 0
 
@@ -26,13 +26,13 @@ class RecursiveDescentParser
   end
 
   def block
-    match("B")
-    while token.match("statemt") do
+    match('B')
+    while token.match('statemt') do
       statemt
     end
-    match("E")
-    if token.match("D")
-      match("D")
+    match('E')
+    if token.match('D')
+      match('D')
     end
   end
 
@@ -40,26 +40,26 @@ class RecursiveDescentParser
   end
 
   def asignmt
-    match("A")
+    match('A')
     ident
-    match("~")
+    match('~')
     exprsn
   end
 
   def ifstmt
-    match("I")
+    match('I')
     comprsn
-    match("T")
+    match('T')
     block
-    if token.match("L")
-      match("L")
+    if token.match('L')
+      match('L')
       block
     end
   end
 
   def wcomprsn
     #Formerly named while, obviously a keyword so it has been renamed for clarity
-    match("W")
+    match('W')
     comprsn
     block
   end
@@ -67,18 +67,18 @@ class RecursiveDescentParser
   def inpout
     iosym
     ident
-    while token.match(",") do
-      match(",")
+    while token.match(',') do
+      match(',')
       ident
     end
   end
 
   def comprsn
-    match("(")
+    match('(')
     oprnd
     opratr
     oprnd
-    match(")")
+    match(')')
   end
 
   def exprsn
@@ -118,29 +118,26 @@ class RecursiveDescentParser
   end
 
   def iosym
-    token == "R" || "O" ? match(token) : error
+    token == 'R' || 'O' ? match(token) : error
   end
 
   def opratr
-    if token == '<' || token == '=' || token == '>' || token == '!'
-      match(token)
-    else error
-    end
+   token == '<' || '=' || '>' || '!' ? match(token) : error
   end
 
   def sumop
-    token == "+" || "-" ? match(token) : error
+    token == '+' || '-' ? match(token) : error
   end
 
   def prodop
-    token == "*" || "/" ? match(token) : error
+    token == '*' || '/' ? match(token) : error
   end
 
   def letter
-    token == "X" || "Y" || "Z" ? match(token) : error
+    token == 'X' || 'Y' || 'Z' ? match(token) : error
   end
 
   def digit
-    token == "0" || "1" ? match(token) : error
+    token == '0' || '1' ? match(token) : error
   end
 end
