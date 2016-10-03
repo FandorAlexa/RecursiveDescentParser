@@ -114,6 +114,7 @@ class RecursiveDescentParser
 
   def intger
     #Formerly named integer, obviously a keyword so it has been renamed for clarity
+      digit until token != match(digit)
   end
 
   def iosym
