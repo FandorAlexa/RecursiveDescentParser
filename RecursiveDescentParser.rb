@@ -129,6 +129,7 @@ class RecursiveDescentParser
   end
 
   def sumop
+    token == "+" || "-" ? match(token) : error
   end
 
   def prodop
