@@ -37,6 +37,18 @@ class RecursiveDescentParser
   end
 
   def statemt
+    if token == 'A'
+      asignmt
+    if token == 'I'
+      ifstmt
+    if token == 'W'
+      wcomprsn
+    if token == 'R'
+      inpout
+    if token == 'B'
+      block
+    else error
+    end
   end
 
   def asignmt
