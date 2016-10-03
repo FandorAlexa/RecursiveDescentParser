@@ -1,16 +1,15 @@
 class RecursiveDescentParser
   private
-  inputString = " "
-  index = 0
-  errorflag = 0
+  @index = 0
+  @errorflag = 0
 
   def token
-    inputString.charAt(index)
+    @inputString[@index]
   end
 
   def advancePtr
-    if index < (inputString.length -1)
-      index += 1
+    if @index < (inputString.length -1)
+      @index += 1
     end
   end
 
@@ -19,7 +18,7 @@ class RecursiveDescentParser
   end
 
   def error
-    puts "error at position: #{index}"
+    puts "error at position: #{@index}"
     errorflag = 1
     advancePtr
   end
@@ -162,4 +161,20 @@ class RecursiveDescentParser
   def digit
     token == '0' || '1' ? match(token) : error
   end
+
+  def start
+    block
+    match '$'
+
+    if errorflag == '0'
+      puts "Legal.\n"
+    else puts "Errors found.\n"
+    end
+  end
 end
+
+rdp = RecursiveDescentParser.new do
+  puts "\nEnter an expression: "
+  @inputString = gets.chomp
+end
+rdp.instance_eval{start}
