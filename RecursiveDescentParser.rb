@@ -101,10 +101,15 @@ class RecursiveDescentParser
   end
 
   def ident
+    letter
+    while match(charter) do
+      charter
+    end
   end
 
   def charter
     #Formerly named char, obviously a keyword so it has been renamed for clarity
+    match(letter) ? letter : digit
   end
 
   def intger
