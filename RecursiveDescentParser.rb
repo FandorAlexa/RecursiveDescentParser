@@ -118,10 +118,14 @@ class RecursiveDescentParser
   end
 
   def iosym
-    token == "R" ? match(token) : match("O")
+    token == "R" || "O" ? match(token) : error
   end
 
   def opratr
+    if token == '<' || token == '=' || token == '>' || token == '!'
+      match(token)
+    else error
+    end
   end
 
   def sumop
