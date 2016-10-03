@@ -1,5 +1,4 @@
 class RecursiveDescentParser
-  #TODO Replace all match(method_name) with the tokens they contain
   private
   inputString = " "
   index = 0
@@ -27,7 +26,7 @@ class RecursiveDescentParser
 
   def block
     match 'B'
-    while token == 'statemt' do
+    while token == 'A' || 'I' || 'W' || 'R' || 'B' do
       statemt
     end
     match 'E'
@@ -79,7 +78,7 @@ class RecursiveDescentParser
   def inpout
     iosym
     ident
-    while token.match(',') do
+    while token == ',' do
       match ','
       ident
     end
@@ -95,7 +94,7 @@ class RecursiveDescentParser
 
   def exprsn
     factor
-    while token == 'sumop' do
+    while token == '+' || '-' do
       sumop
       factor
     end
@@ -103,7 +102,7 @@ class RecursiveDescentParser
 
   def factor
     oprnd
-    while token == 'prodop' do
+    while token == '*' || '/' do
       prodop
       oprnd
     end
@@ -112,7 +111,7 @@ class RecursiveDescentParser
   def oprnd
     if token == '0' || '1'
       integer
-    elsif token ==
+    elsif token == 'X' || 'Y' ||'Z'
       ident
     elsif token == '('
       match '('
@@ -125,19 +124,19 @@ class RecursiveDescentParser
 
   def ident
     letter
-    while token == 'charter' do
+    while token == 'X' || 'Y' ||'Z' || '0' || '1' do
       charter
     end
   end
 
   def charter
     #Formerly named char, obviously a keyword so it has been renamed for clarity
-        match(letter) ? letter : digit
+        token == 'X' || 'Y' ||'Z' ? letter : digit
   end
 
   def intger
     #Formerly named integer, obviously a keyword so it has been renamed for clarity
-      digit until token != match(digit)
+      digit until token != '0' || '1'
   end
 
   def iosym
