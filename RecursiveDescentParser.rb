@@ -110,6 +110,17 @@ class RecursiveDescentParser
   end
 
   def oprnd
+    if token == '0' || '1'
+      integer
+    elsif token ==
+      ident
+    elsif token == '('
+      match '('
+      exprsn
+      match ')'
+    else
+        error
+    end
   end
 
   def ident
