@@ -137,6 +137,7 @@ class RecursiveDescentParser
   end
 
   def letter
+    token == "X" || "Y" || "Z" ? match(token) : error
   end
 
   def digit
