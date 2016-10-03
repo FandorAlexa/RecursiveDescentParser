@@ -1,7 +1,7 @@
 class RecursiveDescentParser
   #TODO Replace all match(method_name) with the tokens they contain
   private
-  inputString = ''
+  inputString = " "
   index = 0
   errorflag = 0
 
@@ -26,52 +26,52 @@ class RecursiveDescentParser
   end
 
   def block
-    match('B')
-    while token.match('statemt') do
+    match 'B'
+    while token == 'statemt' do
       statemt
     end
-    match('E')
-    if token.match('D')
-      match('D')
+    match 'E'
+    if token == 'D'
+      match 'D'
     end
   end
 
   def statemt
     if token == 'A'
       asignmt
-    if token == 'I'
+    elsif token == 'I'
       ifstmt
-    if token == 'W'
+    elsif token == 'W'
       wcomprsn
-    if token == 'R'
+    elsif token == 'R'
       inpout
-    if token == 'B'
+    elsif token == 'B'
       block
     else error
     end
   end
 
   def asignmt
-    match('A')
+    match 'A'
     ident
-    match('~')
+    match '~'
     exprsn
   end
 
   def ifstmt
-    match('I')
+    match 'I'
     comprsn
-    match('T')
+    match 'T'
     block
-    if token.match('L')
-      match('L')
+    if token == 'L'
+      match 'L'
       block
     end
   end
 
   def wcomprsn
     #Formerly named while, obviously a keyword so it has been renamed for clarity
-    match('W')
+    match 'W'
     comprsn
     block
   end
@@ -80,22 +80,22 @@ class RecursiveDescentParser
     iosym
     ident
     while token.match(',') do
-      match(',')
+      match ','
       ident
     end
   end
 
   def comprsn
-    match('(')
+    match '('
     oprnd
     opratr
     oprnd
-    match(')')
+    match ')'
   end
 
   def exprsn
     factor
-    while match(sumop) do
+    while token == 'sumop' do
       sumop
       factor
     end
@@ -103,7 +103,7 @@ class RecursiveDescentParser
 
   def factor
     oprnd
-    while match(prodop) do
+    while token == 'prodop' do
       prodop
       oprnd
     end
@@ -114,7 +114,7 @@ class RecursiveDescentParser
 
   def ident
     letter
-    while match(charter) do
+    while token == 'charter' do
       charter
     end
   end
