@@ -118,6 +118,7 @@ class RecursiveDescentParser
   end
 
   def iosym
+    token == "R" ? match(token) : match("O")
   end
 
   def opratr
