@@ -1,26 +1,34 @@
 class RecursiveDescentParser
   private
-  @index = 0
-  @errorflag = 0
+  $index = 0
+  @@errorFlag = 0
 
   def token
-    @inputString[@index]
+    $inputString[$index]
   end
 
   def advancePtr
-    if @index < (inputString.length -1)
-      @index += 1
+    if $index < (($inputString.length) -1)
+        $index += 1
     end
   end
 
   def match(t)
     t == token ? advancePtr : error
+    if token == '$'
+      if @@errorFlag == 0
+        puts "Legal.\n"
+      else puts "Errors found.\n Error at position: #{$index}. Error Code #{@@errorFlag}"
+      end
+      exit
+    end
   end
 
   def error
-    puts "error at position: #{@index}"
-    errorflag = 1
+    puts "error at position: #{$index}"
+    @@errorFlag = 1
     advancePtr
+    exit
   end
 
   def block
@@ -130,7 +138,7 @@ class RecursiveDescentParser
 
   def charter
     #Formerly named char, obviously a keyword so it has been renamed for clarity
-        token == 'X' || 'Y' ||'Z' ? letter : digit
+    token == 'X' || 'Y' ||'Z' ? letter : digit
   end
 
   def intger
@@ -161,20 +169,15 @@ class RecursiveDescentParser
   def digit
     token == '0' || '1' ? match(token) : error
   end
-
+public
   def start
     block
     match '$'
-
-    if errorflag == '0'
-      puts "Legal.\n"
-    else puts "Errors found.\n"
-    end
   end
 end
 
-rdp = RecursiveDescentParser.new do
-  puts "\nEnter an expression: "
-  @inputString = gets.chomp
-end
-rdp.instance_eval{start}
+puts "\nEnter an expression: "
+$inputString = gets.chomp
+token = $inputString[$index]
+rdp = RecursiveDescentParser.new
+rdp.start
