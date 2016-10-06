@@ -1,4 +1,7 @@
 class RecursiveDescentParser
+<<<<<<< HEAD
+  #private
+=======
   private
   $index = 0
   @@errorFlag = 0
